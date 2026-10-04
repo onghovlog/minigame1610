@@ -1,6 +1,103 @@
 {
-  "players": [],
-  "results": [],
+  "players": [
+    {
+      "id": 1,
+      "name": "Minh Anh",
+      "joinedAt": "2026-10-04T06:23:36.548Z"
+    },
+    {
+      "id": 2,
+      "name": "Hoàng Long",
+      "joinedAt": "2026-10-04T06:23:01.548Z"
+    },
+    {
+      "id": 3,
+      "name": "Thu Hà",
+      "joinedAt": "2026-10-04T06:22:26.548Z"
+    },
+    {
+      "id": 4,
+      "name": "Đức Thắng",
+      "joinedAt": "2026-10-04T06:21:51.548Z"
+    },
+    {
+      "id": 5,
+      "name": "Phương Linh",
+      "joinedAt": "2026-10-04T06:21:16.548Z"
+    }
+  ],
+  "results": [
+    {
+      "id": 1,
+      "playerId": 1,
+      "playerName": "Minh Anh",
+      "scores": {
+        "growth": 4,
+        "experience": 1,
+        "product": 1,
+        "bugHunter": 1,
+        "aiFuture": 0
+      },
+      "primaryUniverse": "growth",
+      "createdAt": "2026-10-04T06:23:36.548Z"
+    },
+    {
+      "id": 2,
+      "playerId": 2,
+      "playerName": "Hoàng Long",
+      "scores": {
+        "growth": 0,
+        "experience": 1,
+        "product": 1,
+        "bugHunter": 0,
+        "aiFuture": 5
+      },
+      "primaryUniverse": "aiFuture",
+      "createdAt": "2026-10-04T06:23:01.548Z"
+    },
+    {
+      "id": 3,
+      "playerId": 3,
+      "playerName": "Thu Hà",
+      "scores": {
+        "growth": 1,
+        "experience": 4,
+        "product": 1,
+        "bugHunter": 1,
+        "aiFuture": 0
+      },
+      "primaryUniverse": "experience",
+      "createdAt": "2026-10-04T06:22:26.548Z"
+    },
+    {
+      "id": 4,
+      "playerId": 4,
+      "playerName": "Đức Thắng",
+      "scores": {
+        "growth": 0,
+        "experience": 0,
+        "product": 1,
+        "bugHunter": 5,
+        "aiFuture": 1
+      },
+      "primaryUniverse": "bugHunter",
+      "createdAt": "2026-10-04T06:21:51.548Z"
+    },
+    {
+      "id": 5,
+      "playerId": 5,
+      "playerName": "Phương Linh",
+      "scores": {
+        "growth": 1,
+        "experience": 1,
+        "product": 4,
+        "bugHunter": 0,
+        "aiFuture": 1
+      },
+      "primaryUniverse": "product",
+      "createdAt": "2026-10-04T06:21:16.548Z"
+    }
+  ],
   "questions": [
     {
       "id": 1,

@@ -51,6 +51,13 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
   const pathname = parsedUrl.pathname;
 
+  // --- HEALTH / STATUS ENDPOINT ---
+  if (pathname === "/status" && req.method === "GET") {
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+    res.end(JSON.stringify({ status: "online", time: new Date().toISOString() }));
+    return;
+  }
+
   // --- REST API ENDPOINTS ---
   if (pathname === "/questions" && req.method === "GET") {
     const db = readDb();
@@ -91,10 +98,8 @@ const server = http.createServer((req, res) => {
     const db = readDb();
     if (req.method === "GET") {
       let results = [...(db.results || [])];
-      // Sort desc if requested
-      if (parsedUrl.query._sort === "createdAt" && parsedUrl.query._order === "desc") {
-        results.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
-      }
+      // Sort desc by createdAt
+      results.sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
       res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
       res.end(JSON.stringify(results));
       return;
@@ -120,9 +125,47 @@ const server = http.createServer((req, res) => {
     }
   }
 
+  // --- RESET ALL DATA ---
+  if (pathname === "/reset" && req.method === "POST") {
+    const db = readDb();
+    db.players = [];
+    db.results = [];
+    writeDb(db);
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+    res.end(JSON.stringify({ success: true, message: "Cleared all players and results" }));
+    return;
+  }
+
+  // --- SEED SAMPLE DEMO DATA ---
+  if (pathname === "/seed" && req.method === "POST") {
+    const db = readDb();
+    const demoSamples = [
+      { name: "Minh Anh", universe: "growth", scores: { growth: 4, experience: 1, product: 1, bugHunter: 1, aiFuture: 0 } },
+      { name: "Hoàng Long", universe: "aiFuture", scores: { growth: 0, experience: 1, product: 1, bugHunter: 0, aiFuture: 5 } },
+      { name: "Thu Hà", universe: "experience", scores: { growth: 1, experience: 4, product: 1, bugHunter: 1, aiFuture: 0 } },
+      { name: "Đức Thắng", universe: "bugHunter", scores: { growth: 0, experience: 0, product: 1, bugHunter: 5, aiFuture: 1 } },
+      { name: "Phương Linh", universe: "product", scores: { growth: 1, experience: 1, product: 4, bugHunter: 0, aiFuture: 1 } }
+    ];
+
+    if (!db.players) db.players = [];
+    if (!db.results) db.results = [];
+
+    demoSamples.forEach((s, idx) => {
+      const pId = db.players.length + 1;
+      const rId = db.results.length + 1;
+      const now = new Date(Date.now() - idx * 35000).toISOString();
+      db.players.push({ id: pId, name: s.name, joinedAt: now });
+      db.results.push({ id: rId, playerId: pId, playerName: s.name, scores: s.scores, primaryUniverse: s.universe, createdAt: now });
+    });
+
+    writeDb(db);
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+    res.end(JSON.stringify({ success: true, count: demoSamples.length }));
+    return;
+  }
+
   // --- STATIC FILE SERVING ---
   let filePath = pathname === "/" ? "/index.html" : pathname;
-  // Prevent directory traversal
   filePath = path.normalize(filePath).replace(/^(\.\.[\/\\])+/, "");
   const fullPath = path.join(__dirname, filePath);
 
@@ -143,7 +186,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, "0.0.0.0", () => {
   console.log(`====================================================`);
-  console.log(`  Web Multiverse Unified Server is RUNNING!`);
+  console.log(`  Web Multiverse Server is RUNNING on PORT ${PORT}!`);
   console.log(`  Local:   http://localhost:${PORT}`);
   console.log(`  Admin:   http://localhost:${PORT}/admin.html`);
   console.log(`====================================================`);

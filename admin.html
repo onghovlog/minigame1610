@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Web Multiverse — Admin Dashboard</title>
+  <title>Web Multiverse — Live Admin Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="admin-body">
@@ -11,9 +11,15 @@
       <div>
         <div class="badge">LIVE DASHBOARD</div>
         <h1>WEB MULTIVERSE</h1>
+        <div class="status-pill" id="statusBadge">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Đang kết nối máy chủ...</span>
+        </div>
       </div>
-      <div style="display:flex;gap:10px;">
-        <button class="secondary" onclick="openQrModal()">📱 Phóng to mã QR</button>
+      <div class="admin-toolbar">
+        <button class="secondary btn-accent" onclick="openQrModal()">📱 Phóng to mã QR</button>
+        <button class="secondary" onclick="seedDemoData()">🎲 Thêm dữ liệu mẫu</button>
+        <button class="secondary btn-danger" onclick="resetAllData()">🗑️ Xóa kết quả</button>
         <button class="secondary" onclick="loadDashboard()">↻ Làm mới</button>
       </div>
     </header>
@@ -23,7 +29,7 @@
       <div id="qrCodePreview" class="qr-container"></div>
       <div class="qr-info">
         <h3>📲 Quét mã để vào màn hình người chơi</h3>
-        <p>Sinh viên quét mã này bằng camera điện thoại để bắt đầu khám phá vũ trụ Web.</p>
+        <p>Sinh viên quét mã này bằng camera điện thoại để bắt đầu bài trắc nghiệm 7 câu hỏi.</p>
         <div>
           <span class="qr-url-badge" id="playerUrlDisplay">Đang tải link...</span>
         </div>
@@ -35,14 +41,25 @@
       </div>
     </section>
 
+    <!-- Metrics -->
     <section class="stats">
-      <div class="metric"><span>Đã tham gia</span><strong id="total">0</strong></div>
-      <div class="metric"><span>Vũ trụ dẫn đầu</span><strong id="leader">—</strong></div>
+      <div class="metric"><span>Tổng số người tham gia</span><strong id="total">0</strong></div>
+      <div class="metric"><span>Vũ trụ nổi trội nhất</span><strong id="leader">—</strong></div>
     </section>
 
+    <!-- Distribution & Participants Grid -->
     <section class="admin-grid">
-      <div class="panel"><h2>Phân bố Multiverse</h2><div id="bars"></div></div>
-      <div class="panel"><h2>Người tham gia mới nhất</h2><div id="recent"></div></div>
+      <div class="panel">
+        <h2>Phân bố Vũ trụ nghề nghiệp</h2>
+        <div id="bars"></div>
+      </div>
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <h2 style="margin:0;">Người tham gia mới nhất</h2>
+          <small id="updateNotice" style="color:var(--muted);font-size:12px;">Tự cập nhật mỗi 3s</small>
+        </div>
+        <div id="recent"></div>
+      </div>
     </section>
   </main>
 
@@ -55,7 +72,7 @@
       <p style="margin:0 0 14px">Dùng camera điện thoại để quét mã bên dưới:</p>
       <div id="bigQrCode" class="big-qr"></div>
       <div class="qr-url-badge" id="modalUrlDisplay" style="font-size:14px;margin-bottom:12px"></div>
-      <p class="tiny" style="color:var(--muted)">Đảm bảo điện thoại kết nối chung Wi-Fi với máy chiếu</p>
+      <p class="tiny" style="color:var(--muted)">Đảm bảo điện thoại kết nối chung mạng Wi-Fi hoặc mở 4G</p>
     </div>
   </div>
 
