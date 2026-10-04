@@ -206,7 +206,7 @@ async function loadDashboard() {
       `;
     } else {
       document.getElementById("recent").innerHTML = results
-        .slice(0, 15)
+        .slice(0, 100)
         .map((r) => {
           const uInfo = meta[r.primaryUniverse] || ["✨", "Khám phá"];
           const time = timeAgo(r.createdAt);
