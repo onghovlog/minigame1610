@@ -1,0 +1,188 @@
+{
+  "players": [],
+  "results": [],
+  "questions": [
+    {
+      "id": 1,
+      "text": "Website vừa launch nhưng gần như không có người truy cập. Bạn muốn làm gì đầu tiên?",
+      "answers": [
+        {
+          "text": "Tìm cách kéo traffic từ Google và mạng xã hội",
+          "universe": "growth"
+        },
+        {
+          "text": "Xem người dùng có hiểu giao diện và CTA không",
+          "universe": "experience"
+        },
+        {
+          "text": "Kiểm tra website đang giải quyết đúng nhu cầu chưa",
+          "universe": "product"
+        },
+        {
+          "text": "Tìm lỗi khiến tracking, form hoặc chức năng bị hỏng",
+          "universe": "bugHunter"
+        },
+        {
+          "text": "Dùng AI phân tích nhanh nội dung và đề xuất cải thiện",
+          "universe": "aiFuture"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "Team chỉ còn 1 ngày trước deadline. Bạn tự nhiên muốn nhận phần việc nào nhất?",
+      "answers": [
+        {
+          "text": "Chuẩn bị nội dung và kế hoạch thu hút người dùng",
+          "universe": "growth"
+        },
+        {
+          "text": "Chỉnh giao diện để dễ dùng và rõ ràng hơn",
+          "universe": "experience"
+        },
+        {
+          "text": "Sắp xếp ưu tiên và giúp team chốt việc quan trọng",
+          "universe": "product"
+        },
+        {
+          "text": "Test các luồng quan trọng trước khi release",
+          "universe": "bugHunter"
+        },
+        {
+          "text": "Tìm cách dùng AI để team hoàn thành nhanh hơn",
+          "universe": "aiFuture"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "Khi dùng một app mới, điều gì khiến bạn chú ý nhất?",
+      "answers": [
+        {
+          "text": "App này thu hút và giữ người dùng bằng cách nào?",
+          "universe": "growth"
+        },
+        {
+          "text": "Giao diện có đẹp, trực quan và dễ thao tác không?",
+          "universe": "experience"
+        },
+        {
+          "text": "Tính năng cốt lõi giải quyết vấn đề gì?",
+          "universe": "product"
+        },
+        {
+          "text": "Có cách nào làm app lỗi không nhỉ?",
+          "universe": "bugHunter"
+        },
+        {
+          "text": "Có thể thêm AI vào đâu để app thông minh hơn?",
+          "universe": "aiFuture"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "text": "Nếu được tham gia một workshop ngay hôm nay, bạn chọn chủ đề nào?",
+      "answers": [
+        {
+          "text": "SEO, Analytics và Digital Marketing",
+          "universe": "growth"
+        },
+        {
+          "text": "Figma, UI/UX và hành vi người dùng",
+          "universe": "experience"
+        },
+        {
+          "text": "BA, Product, Agile/Scrum và DevOps",
+          "universe": "product"
+        },
+        {
+          "text": "Testing, QA và Automation",
+          "universe": "bugHunter"
+        },
+        {
+          "text": "AI Coding, Chatbot và AI Workflow",
+          "universe": "aiFuture"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "text": "Bạn thấy vui nhất khi...",
+      "answers": [
+        {
+          "text": "Một chiến dịch làm lượng truy cập tăng rõ rệt",
+          "universe": "growth"
+        },
+        {
+          "text": "Người dùng nói sản phẩm rất dễ sử dụng",
+          "universe": "experience"
+        },
+        {
+          "text": "Cả team phối hợp tốt và ra đúng sản phẩm cần thiết",
+          "universe": "product"
+        },
+        {
+          "text": "Bạn tìm ra một lỗi khó trước khi khách hàng gặp phải",
+          "universe": "bugHunter"
+        },
+        {
+          "text": "Bạn biến một việc mất hàng giờ thành vài phút nhờ AI",
+          "universe": "aiFuture"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "text": "Trong một bài tập nhóm, bạn thường có xu hướng...",
+      "answers": [
+        {
+          "text": "Nghĩ cách giới thiệu sản phẩm để nhiều người biết",
+          "universe": "growth"
+        },
+        {
+          "text": "Quan tâm cách trình bày và trải nghiệm",
+          "universe": "experience"
+        },
+        {
+          "text": "Kết nối mọi người, chia việc và theo dõi tiến độ",
+          "universe": "product"
+        },
+        {
+          "text": "Soi kỹ từng trường hợp và kiểm tra trước khi nộp",
+          "universe": "bugHunter"
+        },
+        {
+          "text": "Thử công cụ mới để tăng tốc cả nhóm",
+          "universe": "aiFuture"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "text": "Câu hỏi nào giống bạn nhất?",
+      "answers": [
+        {
+          "text": "Làm sao để nhiều người tìm thấy sản phẩm hơn?",
+          "universe": "growth"
+        },
+        {
+          "text": "Làm sao để người dùng thấy sản phẩm dễ dùng hơn?",
+          "universe": "experience"
+        },
+        {
+          "text": "Chúng ta thực sự nên xây tính năng nào trước?",
+          "universe": "product"
+        },
+        {
+          "text": "Nếu người dùng làm khác dự kiến thì chuyện gì xảy ra?",
+          "universe": "bugHunter"
+        },
+        {
+          "text": "AI có thể giúp mình giải bài toán này theo cách nào?",
+          "universe": "aiFuture"
+        }
+      ]
+    }
+  ]
+}

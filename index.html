@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Web Multiverse</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero card">
+      <div class="badge">WEB MULTIVERSE</div>
+      <div class="orbit">✦</div>
+      <h1>Web không chỉ là <span>Code.</span></h1>
+      <p>7 lựa chọn. 5 vũ trụ nghề nghiệp. Khám phá hướng đi nổi trội của bạn trong vài phút.</p>
+      <form id="joinForm">
+        <label for="name">Tên của bạn</label>
+        <input id="name" maxlength="40" autocomplete="name" placeholder="Ví dụ: Minh Anh" required autofocus>
+        <button type="submit">Bắt đầu khám phá →</button>
+      </form>
+      <p class="tiny">Không có đáp án đúng hay sai. Hãy chọn điều giống bạn nhất.</p>
+      
+      <button type="button" class="share-trigger" onclick="openShareQrModal()">📲 Chia sẻ mã QR cho bạn bè</button>
+    </section>
+  </main>
+
+  <!-- Share QR Modal -->
+  <div id="shareQrModal" class="modal-overlay" onclick="closeShareQrModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeShareQrModal()">&times;</button>
+      <div class="badge">CHIA SẺ TRÒ CHƠI</div>
+      <h2 style="margin:12px 0 6px">Mời bạn cùng tham gia</h2>
+      <p style="margin:0 0 14px">Quét mã bên dưới để vào chơi cùng bạn bè:</p>
+      <div id="shareQrCode" class="big-qr"></div>
+      <div class="qr-url-badge" id="shareUrlDisplay" style="font-size:13px;margin-bottom:12px"></div>
+    </div>
+  </div>
+
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
