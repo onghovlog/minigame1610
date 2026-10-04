@@ -1,0 +1,16 @@
+{
+  "name": "minigame1610",
+  "version": "1.0.0",
+  "description": "Web Multiverse Mini Game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "json-server --watch db.json --port 3000 --static ."
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

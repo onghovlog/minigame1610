@@ -1,30 +1,56 @@
-const API = `${window.location.protocol}//${window.location.hostname || "localhost"}:3000`;
+function getApiUrl() {
+  if (window.location.port === "5000" || window.location.port === "5500") {
+    return `${window.location.protocol}//${window.location.hostname}:3000`;
+  }
+  return window.location.origin;
+}
+
+const API = getApiUrl();
 
 document.getElementById("joinForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const name = document.getElementById("name").value.trim();
+  const nameInput = document.getElementById("name");
+  const name = nameInput ? nameInput.value.trim() : "";
   if (!name) return;
+
+  const submitBtn = e.target.querySelector("button[type='submit']");
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Đang vào game...";
+  }
+
+  let player = {
+    id: Date.now(),
+    name: name,
+    joinedAt: new Date().toISOString()
+  };
+
   try {
-    const r = await fetch(`${API}/players`, {
+    const res = await fetch(`${API}/players`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, joinedAt: new Date().toISOString() })
+      body: JSON.stringify({ name, joinedAt: player.joinedAt })
     });
-    const player = await r.json();
-    localStorage.setItem("wmPlayer", JSON.stringify(player));
-    location.href = "game.html";
+    if (res.ok) {
+      player = await res.json();
+    }
   } catch (err) {
-    alert("Không kết nối được dữ liệu. Hãy kiểm tra json-server đang chạy ở cổng 3000.");
+    console.warn("API offline or blocked, using local player session:", err);
   }
+
+  localStorage.setItem("wmPlayer", JSON.stringify(player));
+  location.href = "game.html";
 });
 
-// QR Share Modal Logic
+// QR Share Modal
 let shareQr = null;
 function openShareQrModal() {
   const modal = document.getElementById("shareQrModal");
   const display = document.getElementById("shareUrlDisplay");
   const container = document.getElementById("shareQrCode");
-  const currentUrl = window.location.href.split("#")[0];
+  
+  // Clean URL to index.html
+  const currentUrl = `${window.location.origin}/index.html`;
 
   if (display) display.textContent = currentUrl;
   if (container && !shareQr && typeof QRCode !== "undefined") {
